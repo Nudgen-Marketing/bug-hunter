@@ -1,0 +1,51 @@
+{
+  "extName": {
+    "message": "Page Destroyer",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Знищуй будь-яку веб-сторінку зброєю, звуками та анімаціями.",
+    "description": "Extension description"
+  },
+  "actionTitle": {
+    "message": "Page Destroyer",
+    "description": "Browser action tooltip"
+  },
+  "headerTagline": {
+    "message": "Обери зброю",
+    "description": "Popup header tagline"
+  },
+  "sectionSelectWeapon": {
+    "message": "Обери зброю",
+    "description": "Label above weapon grid"
+  },
+  "startMuted": {
+    "message": "Без звуку",
+    "description": "Mute sound by default checkbox"
+  },
+  "destroyPage": {
+    "message": "Знищити сторінку",
+    "description": "Main CTA button"
+  },
+  "rateUs": {
+    "message": "Оціни нас",
+    "description": "Rate us button text"
+  },
+  "rateUsTitle": {
+    "message": "Оцінити в Chrome Web Store",
+    "description": "Rate us button tooltip"
+  },
+  "extWeapon_flamer": { "message": "Вогнемет" },
+  "extWeapon_laser": { "message": "Лазер" },
+  "extWeapon_machinegun": { "message": "Кулемет" },
+  "extWeapon_hammer": { "message": "Молот" },
+  "extWeapon_meteor": { "message": "Метеор" },
+  "extWeapon_blackhole": { "message": "Чорна діра" },
+  "extWeapon_explosion": { "message": "Вибух" },
+  "extWeapon_acid": { "message": "Кислота" },
+  "extWeapon_freeze": { "message": "Мороз" },
+  "extWeapon_lightning": { "message": "Блискавка" },
+  "extWeapon_tornado": { "message": "Торнадо" },
+  "extWeapon_pixelate": { "message": "Глітч" },
+  "extWeapon_gravity": { "message": "Гравітація" }
+}

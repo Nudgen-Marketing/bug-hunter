@@ -1,0 +1,51 @@
+{
+  "extName": {
+    "message": "Page Destroyer",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Destroy any webpage with weapons, sound effects, and satisfying animations.",
+    "description": "Extension description for store and manifest"
+  },
+  "actionTitle": {
+    "message": "Page Destroyer",
+    "description": "Browser action tooltip"
+  },
+  "headerTagline": {
+    "message": "Pick your weapon",
+    "description": "Popup header tagline"
+  },
+  "sectionSelectWeapon": {
+    "message": "Select weapon",
+    "description": "Label above weapon grid"
+  },
+  "startMuted": {
+    "message": "Start muted",
+    "description": "Mute sound by default checkbox"
+  },
+  "destroyPage": {
+    "message": "Destroy page",
+    "description": "Main CTA button"
+  },
+  "rateUs": {
+    "message": "Rate us",
+    "description": "Rate us button text"
+  },
+  "rateUsTitle": {
+    "message": "Rate us on Chrome Web Store",
+    "description": "Rate us button tooltip"
+  },
+  "extWeapon_flamer": { "message": "Flamer" },
+  "extWeapon_laser": { "message": "Laser" },
+  "extWeapon_machinegun": { "message": "Machine Gun" },
+  "extWeapon_hammer": { "message": "Hammer" },
+  "extWeapon_meteor": { "message": "Meteor" },
+  "extWeapon_blackhole": { "message": "Black Hole" },
+  "extWeapon_explosion": { "message": "Explosion" },
+  "extWeapon_acid": { "message": "Acid" },
+  "extWeapon_freeze": { "message": "Freeze" },
+  "extWeapon_lightning": { "message": "Lightning" },
+  "extWeapon_tornado": { "message": "Tornado" },
+  "extWeapon_pixelate": { "message": "Glitch" },
+  "extWeapon_gravity": { "message": "Gravity" }
+}
