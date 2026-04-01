@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bug Hunter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Exo+2:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 380px;
+      min-height: 500px;
+      background: #0a0a0f;
+      color: #e8e8ee;
+      font-family: 'Exo 2', sans-serif;
+      overflow-x: hidden;
+    }
+    .popup { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+
+    .header { text-align: center; padding: 12px 0 8px; }
+    .title {
+      font-family: 'Orbitron', monospace, sans-serif;
+      font-size: 22px;
+      background: linear-gradient(135deg, #00ff88, #00cc66);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+    }
+    .bug-icon { -webkit-text-fill-color: initial; }
+    .tagline { font-size: 12px; color: #888; margin-top: 4px; letter-spacing: 2px; text-transform: uppercase; }
+
+    .mode-tabs { display: flex; gap: 8px; }
+    .mode-tab {
+      flex: 1;
+      padding: 8px;
+      border: 2px solid #333;
+      background: #1a1a25;
+      color: #aaa;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 150ms;
+    }
+    .mode-tab.active { border-color: #00ff88; color: #00ff88; background: #0a1a10; }
+    .mode-tab:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .section { }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .tool-grid, .weapon-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+
+    .tool-btn, .weapon-btn {
+      aspect-ratio: 1;
+      border: 2px solid #333;
+      background: linear-gradient(180deg, #2a2a3a, #1a1a25);
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 150ms;
+    }
+    .btn-icon { font-size: 20px; }
+    .tool-btn:hover, .weapon-btn:hover { transform: scale(1.05); border-color: #00ff88; }
+    .tool-btn.active { border-color: #00ff88; box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); background: linear-gradient(180deg, #17351f, #0f2316); }
+    .weapon-btn.active { border-color: #ff4d00; box-shadow: 0 0 10px rgba(255, 77, 0, 0.3); background: linear-gradient(180deg, #3a2020, #251515); }
+    .tool-btn.locked { opacity: 0.35; cursor: not-allowed; }
+    .tool-btn.locked:hover { transform: none; border-color: #333; }
+    .lock-badge { position: absolute; bottom: 2px; right: 2px; font-size: 10px; }
+
+    .footer { display: flex; align-items: center; gap: 12px; padding-top: 8px; }
+    .mute-toggle { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 12px; }
+    .mute-toggle input { cursor: pointer; }
+    .mute-label { color: #888; }
+
+    .start-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #00cc66, #00ff88);
+      color: #0a0a0f;
+      font-family: 'Orbitron', monospace, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 150ms;
+      letter-spacing: 1px;
+    }
+    .start-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+    .start-btn:active { transform: scale(0.98); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="popup/main.js"></script>
+</body>
+</html>

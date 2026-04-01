@@ -1,0 +1,72 @@
+import type { BugDefinition } from '../types';
+
+export const BUG_REGISTRY: Record<string, BugDefinition> = {
+  cockroach: {
+    id: 'cockroach',
+    name: 'Cockroach',
+    tier: 1,
+    emoji: '\u{1FAB3}',
+    baseHP: 1,
+    baseSpeed: 60,
+    hitRadius: 18,
+    scoreValue: 100,
+    stressReduction: 3,
+    scatterRadius: 80,
+  },
+  fly: {
+    id: 'fly',
+    name: 'Fly',
+    tier: 1,
+    emoji: '\u{1FAB0}',
+    baseHP: 1,
+    baseSpeed: 110,
+    hitRadius: 14,
+    scoreValue: 125,
+    stressReduction: 2,
+    scatterRadius: 110,
+    unlockScore: 0,
+  },
+  spider: {
+    id: 'spider',
+    name: 'Spider',
+    tier: 2,
+    emoji: '\u{1F577}\u{FE0F}',
+    baseHP: 3,
+    baseSpeed: 58,
+    hitRadius: 18,
+    scoreValue: 320,
+    stressReduction: 5,
+    scatterRadius: 100,
+    unlockScore: 2200,
+  },
+  moth: {
+    id: 'moth',
+    name: 'Null Pointer Moth',
+    tier: 3,
+    emoji: '\u{1F99F}',
+    baseHP: 4,
+    baseSpeed: 92,
+    hitRadius: 20,
+    scoreValue: 520,
+    stressReduction: 7,
+    scatterRadius: 120,
+    unlockScore: 4200,
+  },
+  queen: {
+    id: 'queen',
+    name: 'Segfault Queen',
+    tier: 3,
+    emoji: '\u{1F41E}',
+    baseHP: 10,
+    baseSpeed: 52,
+    hitRadius: 26,
+    scoreValue: 1600,
+    stressReduction: 12,
+    scatterRadius: 130,
+    unlockScore: 6500,
+  },
+};
+
+export function getBugDefinition(id: string): BugDefinition | undefined {
+  return BUG_REGISTRY[id];
+}
