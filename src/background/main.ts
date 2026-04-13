@@ -1,4 +1,9 @@
-const PROTECTED_URL_PATTERN = /^(chrome:\/\/|chrome-extension:\/\/|about:)/;
+import {
+  executeScript,
+  getTab,
+  insertCSS,
+  isProtectedPageUrl,
+} from '../shared/webextension';
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message.action !== 'activate') return;
@@ -13,20 +18,18 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 
   (async () => {
     try {
-      const tab = await chrome.tabs.get(tabId);
-      if (!tab.url || PROTECTED_URL_PATTERN.test(tab.url)) {
+      const tab = await getTab(tabId);
+      if (!tab.url || isProtectedPageUrl(tab.url)) {
         sendResponse({ ok: false, error: 'Cannot run on this page' });
         return;
       }
 
-      // Inject CSS
-      await chrome.scripting.insertCSS({
+      await insertCSS({
         target: { tabId },
-        files: ['dist/content.css'],
+        files: ['content.css'],
       });
 
-      // Set globals before content script runs
-      await chrome.scripting.executeScript({
+      await executeScript({
         target: { tabId },
         func: (w: string, m: boolean, selectedModeArg: 'free-play' | 'challenge', selectedToolArg: string) => {
           (window as any).bugCatcherWeapon = w;
@@ -42,10 +45,9 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         args: [weapon || 'slipper', !!mute, selectedMode, tool || 'destroy-tools'],
       });
 
-      // Inject content script
-      await chrome.scripting.executeScript({
+      await executeScript({
         target: { tabId },
-        files: ['dist/content/main.js'],
+        files: ['content/main.js'],
       });
 
       sendResponse({ ok: true });

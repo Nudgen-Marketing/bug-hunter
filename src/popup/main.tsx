@@ -2,6 +2,11 @@ import { render } from "preact";
 import { useState, useCallback, useEffect } from "preact/hooks";
 import { refreshProgressionFromStorage } from "../shared/storage";
 import type { ProgressionData } from "../shared/progression";
+import {
+  isProtectedPageUrl,
+  queryActiveTab,
+  sendRuntimeMessage,
+} from "../shared/webextension";
 
 const ACHIEVEMENT_LABELS: Record<string, string> = {
   "first-blood": "First Blood",
@@ -43,23 +48,23 @@ function App() {
   }, []);
 
   const activate = useCallback(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      const tab = tabs[0];
+    void (async () => {
+      const tab = await queryActiveTab();
       if (!tab?.id) return;
 
       const url = tab.url || "";
-      if (
-        ["chrome://", "chrome-extension://", "about:"].some((p) =>
-          url.startsWith(p),
-        )
-      )
-        return;
+      if (isProtectedPageUrl(url)) return;
 
-      chrome.runtime.sendMessage(
-        { action: "activate", tabId: tab.id, weapon, mute: muted, mode, tool },
-        () => window.close(),
-      );
-    });
+      await sendRuntimeMessage({
+        action: "activate",
+        tabId: tab.id,
+        weapon,
+        mute: muted,
+        mode,
+        tool,
+      });
+      window.close();
+    })();
   }, [weapon, muted, tool]);
 
   return (

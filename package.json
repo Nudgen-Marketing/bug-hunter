@@ -2,15 +2,20 @@
   "name": "bug-catcher",
   "version": "1.0.0",
   "private": true,
-  "description": "IT-themed bug hunting Chrome extension",
+  "description": "IT-themed bug hunting browser extension",
   "author": {
     "name": "Nudgen",
     "email": "contact@nudgen.net",
     "url": "https://nudgen.net"
   },
   "scripts": {
-    "build": "node esbuild.config.mjs",
-    "dev": "node esbuild.config.mjs --watch",
+    "build": "npm run build:all",
+    "build:chrome": "node scripts/build-extension.mjs --target=chrome",
+    "build:edge": "node scripts/build-extension.mjs --target=edge",
+    "build:firefox": "node scripts/build-extension.mjs --target=firefox",
+    "build:all": "npm run build:chrome && npm run build:edge && npm run build:firefox",
+    "dev": "node scripts/build-extension.mjs --target=chrome --watch",
+    "package:all": "npm run build:all && node scripts/package-extensions.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
