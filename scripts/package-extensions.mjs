@@ -13,13 +13,16 @@ if (targets.some((target) => !VALID_TARGETS.includes(target))) {
 }
 
 const artifactsDir = resolve('artifacts');
-rmSync(artifactsDir, { recursive: true, force: true });
 mkdirSync(artifactsDir, { recursive: true });
 
 for (const target of targets) {
   const sourceDir = resolve(join('dist', target));
   const archiveName = `bug-hunter-${target}-v${packageJson.version}.zip`;
   const archivePath = join(artifactsDir, archiveName);
+
+  // Only replace the archive being built, leaving other target artifacts intact.
+  rmSync(archivePath, { force: true });
+
   const result = spawnSync(
     'zip',
     ['-r', archivePath, '.'],
@@ -31,6 +34,18 @@ for (const target of targets) {
 
   if (result.status !== 0) {
     process.exit(result.status ?? 1);
+  }
+
+  const validation = spawnSync(
+    process.execPath,
+    ['scripts/validate-extension-package.mjs', '--zip', archivePath],
+    {
+      stdio: 'inherit',
+    },
+  );
+
+  if (validation.status !== 0) {
+    process.exit(validation.status ?? 1);
   }
 }
 

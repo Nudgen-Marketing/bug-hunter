@@ -59,7 +59,7 @@ If a page is too minimal to play well, Bug Hunter will tell you and avoid launch
   - Hunt crawling bugs on any webpage, drop your stress meter, and debug chaos with IT-themed tools in this playful Chrome game.
 - **Detailed description**:
   - Use the **Long Description** section above.
-- **Version**: 2.0.0
+- **Version**: 1.0.0
 - **Support URL**: Add your support page or GitHub issues URL before submit.
 - **Homepage URL**: Add your project homepage (optional but recommended).
 
@@ -86,9 +86,10 @@ Use the screenshot spec above to produce a compliant first screenshot.
   - `clipboardWrite`: copy/share game text interactions.
 
 ### 4) Before Submit Checklist
-- [ ] Build fresh package from current source (`npm run build`).
-- [ ] Verify `dist/manifest.json` version and metadata are correct.
-- [ ] Zip only release files from `dist/` for upload.
+- [ ] Build a fresh Chrome package from current source (`npm run package:chrome`).
+- [ ] Verify `dist/chrome/manifest.json` version and metadata are correct.
+- [ ] Validate the exact upload artifact:
+  - `node scripts/validate-extension-package.mjs --zip artifacts/bug-hunter-chrome-v$(node -p "require('./package.json').version").zip`
 - [ ] Confirm icons exist for 16/32/48/128.
 - [ ] Add support URL and contact email in CWS listing.
 - [ ] Upload at least one compliant screenshot.
@@ -105,7 +106,8 @@ Use the screenshot spec above to produce a compliant first screenshot.
 - developer humor
 
 ### 6) Package Upload Notes
-- Upload a zip generated from the built extension output.
+- Upload only `artifacts/bug-hunter-chrome-v<version>.zip` to the Chrome Web Store.
+- Do not upload root-level legacy zips such as `bug-hunter-v<version>.zip`.
 - Recommended zip content root:
   - `manifest.json`
   - `background/main.js`

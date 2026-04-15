@@ -65,7 +65,9 @@ npm run dev
 - `npm run build:edge` : production build to `dist/edge/`
 - `npm run build:firefox` : production build to `dist/firefox/`
 - `npm run dev` : watch Chrome build with inline sourcemaps
+- `npm run package:chrome` : build and package Chrome only (for CWS upload)
 - `npm run package:all` : build and zip Chrome, Edge, and Firefox packages into `artifacts/`
+- `npm run validate:artifacts` : validate packaged zip manifests and referenced file paths
 - `npm run typecheck` : TypeScript type check
 - `npm test` : run test suite once
 - `npm run test:watch` : run tests in watch mode
@@ -102,5 +104,14 @@ Release packaging writes store-ready zip files with `manifest.json` at the archi
 - `artifacts/bug-hunter-edge-v1.0.0.zip`
 - `artifacts/bug-hunter-firefox-v1.0.0.zip`
 
+For Chrome Web Store submissions, upload only:
+- `artifacts/bug-hunter-chrome-v<version>.zip`
+
+Recommended pre-submit commands:
+```bash
+npm run package:chrome
+node scripts/validate-extension-package.mjs --zip artifacts/bug-hunter-chrome-v$(node -p "require('./package.json').version").zip
+```
+
 ## Version
-Current extension version: `2.0.0`
+Current extension version: `1.0.0`

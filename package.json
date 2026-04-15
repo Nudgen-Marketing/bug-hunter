@@ -15,8 +15,11 @@
     "build:firefox": "node scripts/build-extension.mjs --target=firefox",
     "build:all": "npm run build:chrome && npm run build:edge && npm run build:firefox",
     "dev": "node scripts/build-extension.mjs --target=chrome --watch",
+    "package:chrome": "npm run build:chrome && node scripts/package-extensions.mjs --target=chrome",
     "package:all": "npm run build:all && node scripts/package-extensions.mjs",
+    "validate:artifacts": "node scripts/validate-artifacts.mjs",
     "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
   },
