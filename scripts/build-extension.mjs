@@ -19,6 +19,15 @@ const outdir = join('dist', target);
 
 mkdirSync(outdir, { recursive: true });
 
+// Banner to help reviewers identify the build
+const banner = `/**
+ * Extension: ${packageJson.name}
+ * Version: ${packageJson.version}
+ * Target: ${target}
+ * Build Date: ${new Date().toISOString()}
+ * Note: This code is bundled but NOT minified to facilitate easier review and verification.
+ */`;
+
 const buildOptions = {
   entryPoints: [
     'src/content/main.ts',
@@ -30,12 +39,16 @@ const buildOptions = {
   target: ['firefox128', 'chrome120', 'edge120'],
   outdir,
   entryNames: '[dir]/[name]',
-  sourcemap: isWatch ? 'inline' : false,
-  minify: !isWatch,
+  sourcemap: true,
+  minify: false,
+  treeShaking: true,
   logLevel: 'info',
   jsx: 'transform',
   jsxFactory: 'h',
   jsxFragment: 'Fragment',
+  banner: {
+    js: banner,
+  },
 };
 
 function createManifest(browserTarget) {
