@@ -16,16 +16,22 @@ export class StressMeter {
     this.container.setAttribute('aria-valuemax', '100');
     this.container.setAttribute('aria-valuenow', '50');
 
-    this.container.innerHTML = `
-      <div class="bh-stress-label">STRESS</div>
-      <div class="bh-stress-bar">
-        <div class="bh-stress-fill"></div>
-      </div>
-      <div class="bh-stress-value">50%</div>
-    `;
+    const label = document.createElement('div');
+    label.className = 'bh-stress-label';
+    label.textContent = 'STRESS';
+    this.container.appendChild(label);
 
-    this.fillEl = this.container.querySelector('.bh-stress-fill')!;
-    this.valueEl = this.container.querySelector('.bh-stress-value')!;
+    const bar = document.createElement('div');
+    bar.className = 'bh-stress-bar';
+    this.fillEl = document.createElement('div');
+    this.fillEl.className = 'bh-stress-fill';
+    bar.appendChild(this.fillEl);
+    this.container.appendChild(bar);
+
+    this.valueEl = document.createElement('div');
+    this.valueEl.className = 'bh-stress-value';
+    this.valueEl.textContent = '50%';
+    this.container.appendChild(this.valueEl);
     parent.appendChild(this.container);
 
     this.unsubs.push(

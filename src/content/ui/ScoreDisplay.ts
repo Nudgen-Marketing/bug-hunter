@@ -10,11 +10,15 @@ export class ScoreDisplay {
   constructor(bus: EventBus<GameEvents>, parent: HTMLElement) {
     this.container = document.createElement('div');
     this.container.className = 'bh-score-display';
-    this.container.innerHTML = `
-      <div class="bh-score-label">SCORE</div>
-      <div class="bh-score-value">0</div>
-    `;
-    this.scoreEl = this.container.querySelector('.bh-score-value')!;
+    const label = document.createElement('div');
+    label.className = 'bh-score-label';
+    label.textContent = 'SCORE';
+    this.container.appendChild(label);
+
+    this.scoreEl = document.createElement('div');
+    this.scoreEl.className = 'bh-score-value';
+    this.scoreEl.textContent = '0';
+    this.container.appendChild(this.scoreEl);
     parent.appendChild(this.container);
 
     this.unsubs.push(

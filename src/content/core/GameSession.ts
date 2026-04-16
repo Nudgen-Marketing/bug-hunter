@@ -148,7 +148,7 @@ export class GameSession {
     this.bus.on('game:reset', () => {
       this.destruction?.restoreAll();
       if (this.particlesContainer) {
-        this.particlesContainer.innerHTML = '';
+        this.particlesContainer.replaceChildren();
       }
     });
 
@@ -386,17 +386,27 @@ export class GameSession {
 
     const overlay = document.createElement('div');
     overlay.className = 'bh-end-screen';
-    overlay.innerHTML = `
-      <div class="bh-end-card bh-defeat-card">
-        <div class="bh-end-title">System Overrun</div>
-        <div class="bh-end-subtitle">Stress reached 100%. The bugs took over.</div>
-        <button type="button" class="bh-end-close">Exit</button>
-      </div>
-    `;
-    const btn = overlay.querySelector('.bh-end-close') as HTMLButtonElement | null;
-    if (btn) {
-      btn.addEventListener('click', () => this.stop());
-    }
+    const card = document.createElement('div');
+    card.className = 'bh-end-card bh-defeat-card';
+
+    const title = document.createElement('div');
+    title.className = 'bh-end-title';
+    title.textContent = 'System Overrun';
+    card.appendChild(title);
+
+    const subtitle = document.createElement('div');
+    subtitle.className = 'bh-end-subtitle';
+    subtitle.textContent = 'Stress reached 100%. The bugs took over.';
+    card.appendChild(subtitle);
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'bh-end-close';
+    btn.textContent = 'Exit';
+    btn.addEventListener('click', () => this.stop());
+    card.appendChild(btn);
+
+    overlay.appendChild(card);
     this.container.appendChild(overlay);
     this.endScreenEl = overlay;
   }
