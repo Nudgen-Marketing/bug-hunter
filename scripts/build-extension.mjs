@@ -103,28 +103,12 @@ function copyStaticFiles() {
     'utf8',
   );
 
-  // Post-process Firefox builds to satisfy linter regarding innerHTML in dependencies
+  // Post-process Firefox builds if needed
   if (target === 'firefox') {
-    const filesToSanitize = [
-      join(outdir, 'popup/main.js'),
-      join(outdir, 'content/main.js'),
-      join(outdir, 'background/main.js'),
-    ];
-
-    for (const filePath of filesToSanitize) {
-      try {
-        if (readFileSync(filePath, 'utf8')) {
-          let content = readFileSync(filePath, 'utf8');
-          // Replace innerHTML assignments with bracket notation or replaceChildren() for clearing
-          // This avoids simple static analysis triggers for common library patterns
-          content = content.replace(/\.innerHTML\s*=\s*["']["']/g, '.replaceChildren()');
-          content = content.replace(/\.innerHTML/g, '["inner" + "HTML"]');
-          writeFileSync(filePath, content, 'utf8');
-        }
-      } catch (e) {
-        // Skip files that don't exist
-      }
-    }
+    // We previously had logic here to rename innerHTML to satisfy linter,
+    // but the user requested no obfuscation for easier verification.
+    // If linter issues arise, they should be handled by replacing innerHTML
+    // with safer alternatives in the source code instead of obfuscation.
   }
 }
 
