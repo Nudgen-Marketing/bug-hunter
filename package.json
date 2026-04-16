@@ -1,8 +1,7 @@
 {
   "name": "bug-catcher",
   "version": "1.0.0",
-  "private": true,
-  "description": "IT-themed bug hunting browser extension",
+  "description": "A browser extension game where you squash bugs on real web pages to reduce stress and chase high scores.",
   "author": {
     "name": "Nudgen",
     "email": "contact@nudgen.net",

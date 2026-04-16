@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Bug Hunter",
   "version": "1.0.0",
-  "description": "Hunt bugs crawling on web pages! IT-themed stress relief extension.",
+  "description": "Hunt and squash bugs crawling on real web pages. A fun stress-relief game to chase high scores.",
   "permissions": ["activeTab", "scripting", "clipboardWrite", "storage"],
   "background": {
     "service_worker": "dist/background/main.js"

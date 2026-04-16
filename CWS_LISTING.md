@@ -14,7 +14,7 @@
   - Prefer a neutral site (documentation/news page) for broad audience relevance.
 
 ## Short Description (132 chars)
-Hunt crawling bugs on any webpage, drop your stress meter, and debug chaos with IT-themed tools in this playful Chrome game.
+Hunt crawling bugs on any webpage, lower your stress level, and clear the chaos in this fun and interactive browser game.
 
 ## Keywords
 - bug game
@@ -56,7 +56,7 @@ If a page is too minimal to play well, Bug Hunter will tell you and avoid launch
 - **Category**: Fun
 - **Language**: English (add localized listings later if needed)
 - **Short description**:
-  - Hunt crawling bugs on any webpage, drop your stress meter, and debug chaos with IT-themed tools in this playful Chrome game.
+  - Hunt crawling bugs on any webpage, lower your stress level, and clear the chaos in this fun and interactive browser game.
 - **Detailed description**:
   - Use the **Long Description** section above.
 - **Version**: 1.0.0

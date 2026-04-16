@@ -59,6 +59,10 @@ function createManifest(browserTarget) {
     manifest.browser_specific_settings = {
       gecko: {
         id: 'bug-hunter@nudgen.net',
+        strict_min_version: '140.0',
+        data_collection_permissions: {
+          required: ['none'],
+        },
       },
     };
   } else {
